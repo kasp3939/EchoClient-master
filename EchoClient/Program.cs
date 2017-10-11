@@ -8,13 +8,10 @@ using System.Net;
 using System.IO;
 using System.Threading;
 
-
 namespace EchoClient
 {
     class Program
     {
-
-        
         static void Main(string[] args)
         {
             Program C = new Program();
@@ -28,10 +25,10 @@ namespace EchoClient
             NetworkStream stream = client.GetStream();
             StreamReader reader = new StreamReader(stream);
             StreamWriter writer = new StreamWriter(stream) { AutoFlush = true };
+            
 
-            while (true)
+            while (client.Connected)
             {
-                
                 Console.WriteLine("Ready to send");
                 string LineToSend = Console.ReadLine();
                 writer.WriteLine(LineToSend);
